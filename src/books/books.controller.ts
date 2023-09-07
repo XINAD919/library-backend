@@ -1,27 +1,42 @@
-import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from "@nestjs/common";
 import { BooksService } from "./books.service";
-import { CreateBookDto } from "./dto/books..dto";
+import { CreateBookDto } from "./dto/create-book.dto";
+import { UpdateBookDto } from "./dto/update-book.dto";
+
 @Controller("books")
 export class BooksController {
-  constructor(private booksService: BooksService) {}
+  constructor(private readonly booksService: BooksService) {}
+
+  @Post()
+  async create(@Body() createBookDto: CreateBookDto) {
+    return this.booksService.create(createBookDto);
+  }
 
   @Get()
-  getAllBooks() {
-    return this.booksService.getAllBooks();
+  async findAll() {
+    return this.booksService.findAll();
   }
-  @Post()
-  createBook(@Body() newBook: CreateBookDto) {
-    try {
-      return "guardando";
-      this.booksService.createBook(newBook.id, newBook.title, newBook.author);
-    } catch (error) {
-      console.error(error);
-      return error;
-    }
+
+  @Get(":id")
+  async findOne(@Param("id") id: number) {
+    return this.booksService.findOne(id);
+  }
+
+  @Patch(":id")
+  async update(@Param("id") id: number, @Body() updateBookDto: UpdateBookDto) {
+    return this.booksService.update(id, updateBookDto);
   }
 
   @Delete(":id")
-  deleteBook(@Param("id") id: string) {
-    return this.deleteBook(id);
+  async remove(@Param("id") id: number) {
+    return this.booksService.remove(id);
   }
 }
