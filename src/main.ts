@@ -12,7 +12,14 @@ async function bootstrap() {
       transform: true,
     }),
   );
-  app.enableCors();
+  app.enableCors({
+    origin: true,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders:
+      "Content-Type,Authorization,X-Requested-With,Accept-Language",
+    optionsSuccessStatus: 204,
+    credentials: true,
+  });
   await app.listen(3000);
 }
 bootstrap();

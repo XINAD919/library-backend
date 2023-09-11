@@ -17,7 +17,7 @@ let BooksService = class BooksService {
         this.prisma = prisma;
     }
     async create(data) {
-        return this.prisma.book.create({ data });
+        return this.prisma.book.create({ data: data });
     }
     async findAll() {
         return this.prisma.book.findMany();

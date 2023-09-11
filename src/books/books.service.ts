@@ -9,7 +9,7 @@ export class BooksService {
   constructor(private prisma: PrismaService) {}
   // C
   async create(data: CreateBookDto) {
-    return this.prisma.book.create({ data });
+    return this.prisma.book.create({ data: data });
   }
   // R
   async findAll(): Promise<Book[]> {
