@@ -10,7 +10,7 @@ exports.BooksModule = void 0;
 const common_1 = require("@nestjs/common");
 const books_service_1 = require("./books.service");
 const books_controller_1 = require("./books.controller");
-const prisma_service_1 = require("../prisma.service");
+const prisma_service_1 = require("../prisma/prisma.service");
 let BooksModule = class BooksModule {
 };
 exports.BooksModule = BooksModule;

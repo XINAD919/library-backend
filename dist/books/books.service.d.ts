@@ -1,6 +1,6 @@
 import { CreateBookDto } from "./dto/create-book.dto";
 import { UpdateBookDto } from "./dto/update-book.dto";
-import { PrismaService } from "src/prisma.service";
+import { PrismaService } from "src/prisma/prisma.service";
 import { Book } from "./entities/book.entity";
 export declare class BooksService {
     private prisma;
